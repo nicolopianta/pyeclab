@@ -99,8 +99,15 @@ class Channel:
                 print("Software limits met")  # debug print
                 self.end_technique()
             # Sleep before retriving next measured data
-            time.sleep(sleep_time)
+            time.sleep(self._poll_interval(sleep_time))
         
+
+    def _poll_interval(self, default):
+        """
+        Seconds to wait before asking the instrument for new data again. Subclasses can poll faster while a
+        technique that hands its data over in short-lived buffers is running (see PEISAwareChannel).
+        """
+        return default
 
     ## Methods for setting hardware for the experiment ##
 
