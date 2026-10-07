@@ -81,7 +81,7 @@ def build_limit(
 __all__ = [
     "ChronoAmperometry",
     "ChronoPotentiometry",
-    "ChronoAmperometryWithLimits"
+    "ChronoAmperometryWithLimits",
     "ChronoPotentiometryWithLimits",
     "Loop",
     "OpenCircuitVoltage",
