@@ -7,6 +7,13 @@ section 7.11 -- notably PEIS takes no I_Range / E_Range / Bandwidth (unlike CA).
 the INITIAL HOLD at the step potential (process 0) before the frequency sweep starts, not a timeout: no impedance
 point can appear before it has elapsed. The sweep results (process 1) are decoded by
 pyeclab.channel.peis_channel.PEISAwareChannel.
+
+Recording of the initial hold (process 0): a record_every_dT of 0, or a record_every_dI / record_every_dE of 0, means
+"record every sample" (one point per 24 us, about 40 000 rows/s). The instrument memory then fills within a second and
+the sweep results (process 1) of a sweep that is short compared with the hold are LOST: the technique ends with no
+frequency point at all (measured on a two-RC dummy cell: GEIS 1 kHz -> 100 Hz, 4 points, 1 period of wait: no point with
+0 / 0; all 4 points with record_every_dT = 0.1 s and record_every_dE = 1 V). Pass a positive record_every_dT and a
+large record_every_dI / record_every_dE (a change that never happens) unless the hold itself is wanted at full rate.
 """
 from dataclasses import dataclass, field
 
