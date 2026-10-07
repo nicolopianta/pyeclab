@@ -26,6 +26,7 @@ This library supports the following techniques (not all!):
 - Chono-Amperometry 
 - Chrono-Potentiometry
 - Loop
+- PEIS and GEIS (EC-Lab's own single-sine impedance techniques)
 Note: some techniques like CP and CA allows multiple steps but in the following
 functions, only one is abilitated. For most battery-related reasearch that is
 enough.
@@ -43,8 +44,10 @@ from pyeclab.techniques.ca import ChronoAmperometry
 from pyeclab.techniques.calim import ChronoAmperometryWithLimits
 from pyeclab.techniques.cp import ChronoPotentiometry
 from pyeclab.techniques.cplim import ChronoPotentiometryWithLimits
+from pyeclab.techniques.geis import GEISTechnique
 from pyeclab.techniques.loop import Loop
 from pyeclab.techniques.ocv import OpenCircuitVoltage
+from pyeclab.techniques.peis import PEISTechnique
 from pyeclab.techniques.auxiliary_io import generate_xctr_param
 
 # from pyeclab.techniques.functions import set_duration_to_1s, reset_duration
@@ -83,8 +86,10 @@ __all__ = [
     "ChronoPotentiometry",
     "ChronoAmperometryWithLimits",
     "ChronoPotentiometryWithLimits",
+    "GEISTechnique",
     "Loop",
     "OpenCircuitVoltage",
+    "PEISTechnique",
     "build_limit",
     "generate_xctr_param",
 ]
